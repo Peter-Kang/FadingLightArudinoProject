@@ -41,7 +41,7 @@ void loop() {
   double percent = 0.0;
   percent = totalValue / maxTotalValue;
   //send the value over bluetooth
-  bluetooth.write(percent);
+  Serial.write(percent);
 
   delay(waitDelayTimerInMS);//delay in miliseconds
 }
