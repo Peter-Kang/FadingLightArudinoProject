@@ -14,11 +14,14 @@ int sensorPortValue2 = 0;
 int sensorPortValue3 = 0;
 int sensorPortValue4 = 0;
 int sensorPortValue5 = 0;
-//Max Value
+//Max Total Value
 int maxTotalValue = 1000;
 
 //Loop Delay timer
 int waitDelayTimeInMS = 500;
+
+//Bluetooth stuff, this is where we start and send data over.
+SoftwareSerial Bluetooth(3,2);
 
 void setup() {
   // put your setup code here, to run once:
@@ -39,7 +42,10 @@ void loop() {
   int totalValue = sensorPortValue0 + sensorPortValue1 + sensorPortValue2 + sensorPortValue3 + sensorPortValue4 + sensorPortValue5;
   Serial.println((String) "Total: " + totalValue);
 
-
+  double percent = 0.0;
+  percent = totalValue / maxTotalValue;
+  //send the value over bluetooth
+  bluetooth.write(percent);
 
   delay(waitDelayTimerInMS);//delay in miliseconds
 }
