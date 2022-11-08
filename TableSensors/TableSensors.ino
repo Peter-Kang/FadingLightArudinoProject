@@ -28,13 +28,19 @@ void loop() {
   sensorPortValue4 = analogRead(sensorPort4);
   sensorPortValue5 = analogRead(sensorPort5);
   // Print findings
-  //Serial.println((String)"Values: " +sensorPortValue0+", "+sensorPortValue1+", "+ sensorPortValue2+", "+sensorPortValue3+", "+sensorPortValue4+", "+sensorPortValue5+"."); 
+  // Serial.println((String)"Values: " +sensorPortValue0+", "+sensorPortValue1+", "+ sensorPortValue2+", "+sensorPortValue3+", "+sensorPortValue4+", "+sensorPortValue5+"."); 
   //Add up the values and see if they are above the threshhold
   int totalValue = sensorPortValue0 + sensorPortValue1 + sensorPortValue2 + sensorPortValue3 + sensorPortValue4 + sensorPortValue5;
+  //Serial.println((String)"Total Value: "+totalValue);
   double ratio = totalValue/2500.0;
   if(ratio > 1.0)
   {
     ratio =1.0;
+  }
+
+  if(ratio < 0.0)
+  {
+    ratio = 0.0;
   }
   int brightness = ratio*255;
   //Serial.println((String) "Brightness: " + brightness);
