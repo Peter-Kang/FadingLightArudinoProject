@@ -1,10 +1,10 @@
 //Analog sensorPorts
-int sensorPort0 = 0;
-int sensorPort1 = 1;
-int sensorPort2 = 2;
-int sensorPort3 = 3;
-int sensorPort4 = 4;
-int sensorPort5 = 5;
+int sensorPort0 = A0;
+int sensorPort1 = A1;
+int sensorPort2 = A2;
+int sensorPort3 = A3;
+int sensorPort4 = A4;
+int sensorPort5 = A5;
 //Analog sensorPort Values
 int sensorPortValue0 = 0;
 int sensorPortValue1 = 0;
@@ -15,13 +15,12 @@ int sensorPortValue5 = 0;
 //Max Total Value
 int maxTotalValue = 1000;
 
-//Loop Delay timer
-int waitDelayTimeInMS = 500;
+
 
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(38400); // baud rate
+  Serial.begin(9600); // baud rate
 }
 
 void loop() {
@@ -33,7 +32,7 @@ void loop() {
   sensorPortValue4 = analogRead(sensorPort4);
   sensorPortValue5 = analogRead(sensorPort5);
   // Print findings
-  Serial.println((String)"Values: " +sensorPort0+", "+sensorPort1+", "+ sensorPort2+", "+sensorPort3+", "+sensorPort4+", "+sensorPort5+"."); 
+  Serial.println((String)"Values: " +sensorPortValue0+", "+sensorPortValue1+", "+ sensorPortValue2+", "+sensorPortValue3+", "+sensorPortValue4+", "+sensorPortValue5+"."); 
   //Add up the values and see if they are above the threshhold
   int totalValue = sensorPortValue0 + sensorPortValue1 + sensorPortValue2 + sensorPortValue3 + sensorPortValue4 + sensorPortValue5;
   Serial.println((String) "Total: " + totalValue);
@@ -41,7 +40,8 @@ void loop() {
   double percent = 0.0;
   percent = totalValue / maxTotalValue;
   //send the value over bluetooth
-  Serial.write(percent);
+  //Serial.write(percent);
 
-  delay(waitDelayTimerInMS);//delay in miliseconds
+  //Loop Delay timer
+  delay(500);//delay in miliseconds
 }

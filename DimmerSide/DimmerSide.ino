@@ -6,7 +6,7 @@ int maxBrightness = 255;
 void setup() {
   // declare pin 9 to be an output:
   pinMode(led, OUTPUT);
-  Serial.begin(38400); // baud rate
+  Serial.begin(9600); // baud rate
 }
 
 // the loop routine runs over and over again forever:
